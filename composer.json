@@ -5,8 +5,7 @@
     "license": "MIT",
     "autoload": {
         "files": [ 
-            "src/Cli.php",
-            "src/Differ.php"
+            "src/Cli.php"
         ]
     },
     "authors": [
