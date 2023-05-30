@@ -3,6 +3,28 @@
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
-use function Differ\Cli\start;
+use function Differ\Differ\genDiff;
 
-start();
+$doc = <<<DOC
+Generate diff
+
+Usage:
+  gendiff (-h|--help)
+  gendiff (-v|--version)
+  gendiff [--format <fmt>] <firstFile> <secondFile>
+
+Options:
+  -h --help             Show this screen.
+  -v --version          Show version.
+  --format <fmt>        Report format [default: stylish]
+
+DOC;
+
+$args = Docopt::handle($doc, ['help' => true, 'version' => 'Generate diff 1.0']);
+
+$pathToFirstFile = $args['<firstFile>'];
+$pathToSecondFile = $args['<secondFile>'];
+$formatter = $args['--format'];
+
+$result = genDiff($pathToFirstFile, $pathToSecondFile, $formatter);
+print_r($result);
