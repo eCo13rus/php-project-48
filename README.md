@@ -10,9 +10,9 @@
 - Composer
 - make
 
-### Project Description:
+## Project Description:
 
-## Install Project:
+### Install Project:
 
 - git clone https://github.com/eCo13rus/php-project-lvl1.git
 
