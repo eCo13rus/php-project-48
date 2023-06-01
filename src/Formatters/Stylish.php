@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters\Stylish;
 
-const NUMBERINDENTS = 4;
+const NUMBER_INDENTS = 4;
 
 function makeStylishFormat(array $astTree): string
 {
@@ -11,7 +11,7 @@ function makeStylishFormat(array $astTree): string
 
 function render(array $astTree, int $depth = 0): string
 {
-    $indent = buildIndent($depth, NUMBERINDENTS);
+    $indent = buildIndent($depth, NUMBER_INDENTS);
     $result = array_map(function ($node) use ($depth, $indent) {
         $deepening = $depth + 1;
         switch ($node['type']) {
@@ -34,7 +34,7 @@ function render(array $astTree, int $depth = 0): string
                 return $indent . "    " . $node['key'] . ": " . $valueUnchanged . "\n";
         }
     }, $astTree);
-    return '{' . "\n" . implode("", $result) . $indent . '}' . "\n";
+    return '{' . "\n" . implode("", $result) . $indent . '}';
 }
 
 function buildIndent(int $depth, int $numberOfIndents): string
@@ -52,7 +52,7 @@ function stringify(array $dataValue, int $depth): string
     } elseif (!is_object($value)) {
         return (string) $value;
     }
-    $indent = buildIndent($depth, NUMBERINDENTS);
+    $indent = buildIndent($depth, NUMBER_INDENTS);
     $stringOfArray = array_map(function ($key, $item) use ($depth, $indent) {
         $deepening = $depth + 1;
         $typeOfValueOfNode = (is_object($item)) ? stringify([$item], $deepening) : $item;
