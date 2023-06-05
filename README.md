@@ -4,17 +4,17 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/2ea9e1a47d5c57d93717/maintainability)](https://codeclimate.com/github/eCo13rus/php-project-48/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2ea9e1a47d5c57d93717/test_coverage)](https://codeclimate.com/github/eCo13rus/php-project-48/test_coverage)
 
+# Project Description:
+
 ## Requirements installation:
 
 - PHP
 - Composer
 - make
 
-## Project Description:
-
 ### Install Project:
 
-- git clone https://github.com/eCo13rus/php-project-lvl1.git
+- git clone https://github.com/eCo13rus/php-project-48
 
 - make install
 
