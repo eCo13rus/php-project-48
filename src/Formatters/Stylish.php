@@ -34,12 +34,7 @@ function render(array $astTree, int $depth = 0): string
                 return $indent . "    " . $node['key'] . ": " . $valueUnchanged . "\n";
         }
     }, $astTree);
-    return '{' . "\n" . implode("", $result) . $indent . '}';
-}
-
-function buildIndent(int $depth, int $numberOfIndents): string
-{
-    return str_repeat(" ", $depth * $numberOfIndents);
+    return '{' . "\n" . implode("", $result) . $indent . '}' . "\n";
 }
 
 function stringify(array $dataValue, int $depth): string
@@ -59,4 +54,9 @@ function stringify(array $dataValue, int $depth): string
         return $indent . "    " . "$key: " . $typeOfValueOfNode . "\n";
     }, array_keys(get_object_vars($value)), get_object_vars($value));
     return '{' . "\n" . implode("", $stringOfArray) . $indent . '}';
+}
+
+function buildIndent(int $depth, int $numberOfIndents): string
+{
+    return str_repeat(" ", $depth * $numberOfIndents);
 }

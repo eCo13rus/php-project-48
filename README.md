@@ -19,6 +19,15 @@
 - make install
 
 ## Use the command:
-- ./bin/gendiff tests/file1_flat_structure.json tests/file2_flat_structure.json 
 
-<a href="https://asciinema.org/a/NHCXqEhEqc08sUTK5Oj635fWF" target="_blank"><img src="https://asciinema.org/a/NHCXqEhEqc08sUTK5Oj635fWF.svg" /></a>
+### Comparison of json files
+- ./bin/gendiff tests/fixtures/file1.json tests/fixtures/file2.json 
+
+<a href="https://asciinema.org/a/T61MTfAzrMswp94Xj4OZWRhlT" target="_blank"><img src="https://asciinema.org/a/T61MTfAzrMswp94Xj4OZWRhlT.svg" /></a>
+
+## Use the command:
+
+### Comparison of yaml(yml) files
+- ./bin/gendiff tests/fixtures/file1.yaml tests/fixtures/file2.yml
+
+<a href="https://asciinema.org/a/gl6COHSoL8Tba8fGrzddvtykJ" target="_blank"><img src="https://asciinema.org/a/gl6COHSoL8Tba8fGrzddvtykJ.svg" /></a>
