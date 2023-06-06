@@ -21,13 +21,19 @@
 ## Use the command:
 
 ### Comparison of json files
-- ./bin/gendiff tests/fixtures/file1.json tests/fixtures/file2.json 
+- ./bin/gendiff tests/fixtures/file1_flat.json tests/fixtures/file2_flat.json 
 
 <a href="https://asciinema.org/a/T61MTfAzrMswp94Xj4OZWRhlT" target="_blank"><img src="https://asciinema.org/a/T61MTfAzrMswp94Xj4OZWRhlT.svg" /></a>
 
 ## Use the command:
 
 ### Comparison of yaml(yml) files
-- ./bin/gendiff tests/fixtures/file1.yaml tests/fixtures/file2.yml
+- ./bin/gendiff tests/fixtures/file1_flat.yaml tests/fixtures/file2_flat.yml
 
 <a href="https://asciinema.org/a/gl6COHSoL8Tba8fGrzddvtykJ" target="_blank"><img src="https://asciinema.org/a/gl6COHSoL8Tba8fGrzddvtykJ.svg" /></a>
+
+## Use the command:
+
+### Recursive file comparison json
+
+<a href="https://asciinema.org/a/5ERgW1hHb4ECoxTVg4x84kdIk" target="_blank"><img src="https://asciinema.org/a/5ERgW1hHb4ECoxTVg4x84kdIk.svg" /></a>
