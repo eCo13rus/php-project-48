@@ -16,6 +16,7 @@ class DifferenceTest extends TestCase
     /**
      * @dataProvider argumentProviderForFlatStructure
      * @dataProvider argumentProviderForTreeStructureStylishFormat
+     * @dataProvider argumentProviderForTreeStructurePlainFormat
      */
 
     public function testGenDiff($firstPath, $secondPath, $expected, $style = 'stylish')
@@ -50,6 +51,17 @@ class DifferenceTest extends TestCase
             [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedStylish, 'stylish'],
             [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedStylish],
             [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedStylish, 'stylish']
+        ];
+    }
+
+    public function argumentProviderForTreeStructurePlainFormat(): array
+    {
+        $expectedPlain = file_get_contents($this->
+        getFixtureFullPath('result_plain_formatter_tree'));
+
+        return [
+            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedPlain , 'plain'],
+            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedPlain, 'plain']
         ];
     }
 

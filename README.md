@@ -16,6 +16,8 @@
 
 - git clone https://github.com/eCo13rus/php-project-48
 
+- cd php-project-48
+
 - make install
 
 ## Use the command:
