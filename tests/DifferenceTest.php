@@ -8,10 +8,10 @@ use function Differ\Differ\genDiff;
 
 class DifferenceTest extends TestCase
 {
-    public const PATH_TO_FIRST_JSON_FILES = 'tests/fixtures/file1.json';
-    public const PATH_TO_SECOND_JSON_FILES = 'tests/fixtures/file2.json';
-    public const PATH_TO_FIRST_YAML_FILES = 'tests/fixtures/file1.yaml';
-    public const PATH_TO_SECOND_YML_FILES = 'tests/fixtures/file2.yml';
+    public const PATH_TO_FIRST_JSON_FILES = 'tests/fixtures/file1_tree.json';
+    public const PATH_TO_SECOND_JSON_FILES = 'tests/fixtures/file2_tree.json';
+    public const PATH_TO_FIRST_YAML_FILES = 'tests/fixtures/file1_tree.yaml';
+    public const PATH_TO_SECOND_YML_FILES = 'tests/fixtures/file2_tree.yaml';
 
     /**
      * @dataProvider argumentProviderForFlatStructure
@@ -25,14 +25,14 @@ class DifferenceTest extends TestCase
 
     public function argumentProviderForFlatStructure(): array
     {
-        $firstPathFlatJson = 'tests/fixtures/file1.json';
-        $secondPathFlatJson = 'tests/fixtures/file2.json';
+        $firstPathFlatJson = 'tests/fixtures/file1_flat.json';
+        $secondPathFlatJson = 'tests/fixtures/file2_flat.json';
 
-        $firstPathFlatYaml = 'tests/fixtures/file1.yaml';
-        $secondPathFlatYml = 'tests/fixtures/file2.yml';
+        $firstPathFlatYaml = 'tests/fixtures/file1_flat.yaml';
+        $secondPathFlatYml = 'tests/fixtures/file2_flat.yml';
 
-        $expectedStylishFlat = file_get_contents($this->
-        getFixtureFullPath('result_stylish_formatter'));
+        $expectedStylishFlat = trim(file_get_contents($this->
+        getFixtureFullPath('result_stylish_formatter_flat')));
 
         return [
             [$firstPathFlatJson, $secondPathFlatJson, $expectedStylishFlat],
@@ -42,8 +42,8 @@ class DifferenceTest extends TestCase
 
     public function argumentProviderForTreeStructureStylishFormat(): array
     {
-        $expectedStylish = file_get_contents($this->
-        getFixtureFullPath('result_stylish_formatter'));
+        $expectedStylish = trim(file_get_contents($this->
+        getFixtureFullPath('result_stylish_formatter_tree')));
 
         return [
             [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedStylish],
