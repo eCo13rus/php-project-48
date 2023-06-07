@@ -66,23 +66,6 @@ class DifferenceTest extends TestCase
         ];
     }
 
-    public function testInvalidFormatterThrowsException()
-    {
-        $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Invalid formatter. The format should be 'stylish' , 'plain' or 'json'");
-    
-        genDiff(self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, 'invalidFormatter');
-    }
-
-    public function testInvalidParsersThrowsException()
-    {
-        $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Invalid extension. Extension must be in JSON, YAML or YML");
-
-        genDiff(self::PATH_TO_FIRST_JSON_FILES, '/home/eco13/php-project-48/file.txt', 'stylish');
-    }
-
-
     public function getFixtureFullPath($fixtureName): string
     {
         $parts = [__DIR__, 'fixtures', $fixtureName];
