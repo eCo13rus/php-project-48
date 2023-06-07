@@ -2,7 +2,6 @@
 
 namespace tests\test;
 
-use AdvancedJsonRpc\Message;
 use PHPUnit\Framework\TestCase;
 
 use function Differ\Differ\genDiff;
