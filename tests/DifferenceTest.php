@@ -2,6 +2,7 @@
 
 namespace tests\test;
 
+use AdvancedJsonRpc\Message;
 use PHPUnit\Framework\TestCase;
 
 use function Differ\Differ\genDiff;
@@ -32,8 +33,8 @@ class DifferenceTest extends TestCase
         $firstPathFlatYaml = 'tests/fixtures/file1_flat.yaml';
         $secondPathFlatYml = 'tests/fixtures/file2_flat.yml';
 
-        $expectedStylishFlat = trim(file_get_contents($this->
-        getFixtureFullPath('result_stylish_formatter_flat')));
+        $expectedStylishFlat = file_get_contents($this->
+        getFixtureFullPath('result_stylish_formatter_flat'));
 
         return [
             [$firstPathFlatJson, $secondPathFlatJson, $expectedStylishFlat],
@@ -43,8 +44,8 @@ class DifferenceTest extends TestCase
 
     public function argumentProviderForTreeStructureStylishFormat(): array
     {
-        $expectedStylish = trim(file_get_contents($this->
-        getFixtureFullPath('result_stylish_formatter_tree')));
+        $expectedStylish = file_get_contents($this->
+        getFixtureFullPath('result_stylish_formatter_tree'));
 
         return [
             [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedStylish],
@@ -64,6 +65,23 @@ class DifferenceTest extends TestCase
             [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedPlain, 'plain']
         ];
     }
+
+    public function testInvalidFormatterThrowsException()
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage("Invalid formatter. The format should be 'stylish' , 'plain' or 'json'");
+    
+        genDiff(self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, 'invalidFormatter');
+    }
+
+    public function testInvalidParsersThrowsException()
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage("Invalid extension. Extension must be in JSON, YAML or YML");
+
+        genDiff(self::PATH_TO_FIRST_JSON_FILES, '/home/eco13/php-project-48/file.txt', 'stylish');
+    }
+
 
     public function getFixtureFullPath($fixtureName): string
     {

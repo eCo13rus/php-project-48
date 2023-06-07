@@ -33,7 +33,7 @@ function differenceCalculator(object $dataFirstFile, object $dataSecondFile): ar
         }
         if (is_object($data1[$key]) && is_object($data2[$key])) {
             $children = differenceCalculator($data1[$key], $data2[$key]);
-            return ['key' => $key, 'type' => 'parent', 'children' => $children];
+            return ['key' => $key, 'children' => $children, 'type' => 'parent'];
         }
         if ($data1[$key] === $data2[$key]) {
             return  ['key' => $key, 'data1Value' => $data1[$key], 'type' => 'unchanged'];
