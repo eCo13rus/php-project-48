@@ -46,3 +46,4 @@
 ### Comparison output in flat format:
 ./bin/gendiff --format plain tests/fixtures/file1_flat.json tests/fixtures/file2_flat.json
 
+<a href="https://asciinema.org/a/W6JE0GdDzbJQp6cANr9K6SfxZ" target="_blank"><img src="https://asciinema.org/a/W6JE0GdDzbJQp6cANr9K6SfxZ.svg" /></a>
