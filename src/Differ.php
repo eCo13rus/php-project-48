@@ -26,19 +26,19 @@ function differenceCalculator(object $dataFirstFile, object $dataSecondFile): ar
     $sortKeys = sort($mergeKeys, fn ($left, $right) => strcmp($left, $right));
     $orderedKeys = array_unique($sortKeys);
     return array_map(function ($key) use ($data1, $data2) {
-        if (!array_key_exists($key, $data1)) {
-            return ['key' => $key, 'data2Value' => $data2[$key], 'type' => 'added'];
-        } elseif (!array_key_exists($key, $data2)) {
-            return ['key' => $key, 'data1Value' => $data1[$key], 'type' => 'removed'];
-        }
-        if (is_object($data1[$key]) && is_object($data2[$key])) {
-            $children = differenceCalculator($data1[$key], $data2[$key]);
-            return ['key' => $key,'type' => 'parent', 'children' => $children];
-        }
-        if ($data1[$key] === $data2[$key]) {
-            return  ['key' => $key, 'data1Value' => $data1[$key], 'type' => 'unchanged'];
-        } else {
-            return ['key' => $key, 'data1Value' => $data1[$key], 'data2Value' => $data2[$key], 'type' => 'updated'];
+        switch (true) {
+            case !array_key_exists($key, $data1):
+                return ['key' => $key, 'data2Value' => $data2[$key], 'type' => 'added'];
+            case array_key_exists($key, $data2):
+                return ['key' => $key, 'data1Value' => $data1[$key], 'type' => 'removed'];
+            case is_object($data1[$key]) && is_object($data2[$key]):
+                $children = differenceCalculator($data1[$key], $data2[$key]);
+                return ['key' => $key,'type' => 'parent', 'children' => $children];
+            case $data1[$key] === $data2[$key]:
+                return  ['key' => $key, 'data1Value' => $data1[$key], 'type' => 'unchanged'];
+            default:
+                return ['key' => $key, 'data1Value' => $data1[$key], 'data2Value' => $data2[$key], 'type' => 'updated'];
         }
     }, $orderedKeys);
 }
+
