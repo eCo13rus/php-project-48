@@ -41,4 +41,3 @@ function differenceCalculator(object $dataFirstFile, object $dataSecondFile): ar
         }
     }, $orderedKeys);
 }
-
