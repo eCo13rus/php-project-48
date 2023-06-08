@@ -30,7 +30,7 @@
 
 ## Use the command:
 
-### Comparison of json files
+### Recursive comparison of files with nested structure:
 - ./bin/gendiff tests/fixtures/file1_flat.json tests/fixtures/file2_flat.json 
 
 <a href="https://asciinema.org/a/n1OhFzkY1uFhYCTxoar43PVHW" target="_blank"><img src="https://asciinema.org/a/n1OhFzkY1uFhYCTxoar43PVHW.svg" /></a>
