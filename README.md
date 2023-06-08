@@ -25,21 +25,21 @@
 ### Comparison of json files
 - ./bin/gendiff tests/fixtures/file1_flat.json tests/fixtures/file2_flat.json 
 
-<a href="https://asciinema.org/a/T61MTfAzrMswp94Xj4OZWRhlT" target="_blank"><img src="https://asciinema.org/a/T61MTfAzrMswp94Xj4OZWRhlT.svg" /></a>
+<a href="https://asciinema.org/a/n1OhFzkY1uFhYCTxoar43PVHW" target="_blank"><img src="https://asciinema.org/a/n1OhFzkY1uFhYCTxoar43PVHW.svg" /></a>
 
 ## Use the command:
 
 ### Comparison of yaml(yml) files
 - ./bin/gendiff tests/fixtures/file1_flat.yaml tests/fixtures/file2_flat.yml
 
-<a href="https://asciinema.org/a/gl6COHSoL8Tba8fGrzddvtykJ" target="_blank"><img src="https://asciinema.org/a/gl6COHSoL8Tba8fGrzddvtykJ.svg" /></a>
+<a href="https://asciinema.org/a/Mh4N3xsA6SHkSXRZlZuxO0odJ" target="_blank"><img src="https://asciinema.org/a/Mh4N3xsA6SHkSXRZlZuxO0odJ.svg" /></a>
 
 ## Use the command:
 
 ### Recursive file comparison json
 ./bin/gendiff tests/fixtures/file1_tree.json tests/fixtures/file2_tree.json
 
-<a href="https://asciinema.org/a/5ERgW1hHb4ECoxTVg4x84kdIk" target="_blank"><img src="https://asciinema.org/a/5ERgW1hHb4ECoxTVg4x84kdIk.svg" /></a>
+<a href="https://asciinema.org/a/L3bhoI5yP4svgxqpaeupjMDtw" target="_blank"><img src="https://asciinema.org/a/L3bhoI5yP4svgxqpaeupjMDtw.svg" /></a>
 
 ## Use the command:
 
@@ -47,3 +47,10 @@
 ./bin/gendiff --format plain tests/fixtures/file1_flat.json tests/fixtures/file2_flat.json
 
 <a href="https://asciinema.org/a/W6JE0GdDzbJQp6cANr9K6SfxZ" target="_blank"><img src="https://asciinema.org/a/W6JE0GdDzbJQp6cANr9K6SfxZ.svg" /></a>
+
+## Use the command:
+
+### Comparison output in json format:
+./bin/gendiff --format json tests/fixtures/file1_tree.json tests/fixtures/file2_tree.json
+
+<a href="https://asciinema.org/a/YqHXzm0McftQRNS7NwM9Hwgo1" target="_blank"><img src="https://asciinema.org/a/YqHXzm0McftQRNS7NwM9Hwgo1.svg" /></a>

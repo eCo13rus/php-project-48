@@ -17,6 +17,7 @@ class DifferenceTest extends TestCase
      * @dataProvider argumentProviderForFlatStructure
      * @dataProvider argumentProviderForTreeStructureStylishFormat
      * @dataProvider argumentProviderForTreeStructurePlainFormat
+     * @dataProvider argumentProviderForTreeStructureJsonFormat
      */
 
     public function testGenDiff($firstPath, $secondPath, $expected, $style = 'stylish')
@@ -33,7 +34,7 @@ class DifferenceTest extends TestCase
         $secondPathFlatYml = 'tests/fixtures/file2_flat.yml';
 
         $expectedStylishFlat = file_get_contents($this->
-        getFixtureFullPath('result_stylish_formatter_flat'));
+        getFixtureFullPath('result_formatter_stylish'));
 
         return [
             [$firstPathFlatJson, $secondPathFlatJson, $expectedStylishFlat],
@@ -62,6 +63,17 @@ class DifferenceTest extends TestCase
         return [
             [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedPlain , 'plain'],
             [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedPlain, 'plain']
+        ];
+    }
+
+    public function argumentProviderForTreeStructureJsonFormat(): array
+    {
+        $expectedJson = file_get_contents($this->
+        getFixtureFullPath('result_formatter_json'));
+
+        return [
+            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedJson, 'json'],
+            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedJson, 'json']
         ];
     }
 

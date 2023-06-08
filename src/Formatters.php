@@ -4,6 +4,7 @@ namespace Differ\Formatters;
 
 use function Differ\Formatters\Stylish\makeStylishFormat;
 use function Differ\Formatters\Plain\makePlainFormat;
+use function Differ\Formatters\Json\makeJsonFormat;
 
 function formatSelection(array $astTree, string $formatter): string
 {
@@ -12,6 +13,8 @@ function formatSelection(array $astTree, string $formatter): string
             return makeStylishFormat($astTree);
         case 'plain':
             return makePlainFormat($astTree);
+        case 'json':
+            return makeJsonFormat($astTree);
         default:
             throw new \Exception("Invalid formatter. The format should be 'stylish' , 'plain' or 'json'");
     }
