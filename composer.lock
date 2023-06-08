@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "361e26c4b79c2b64938bc60bd9d52a12",
+    "content-hash": "81b873c1d1df5f76655c1361383b13d4",
     "packages": [
         {
             "name": "docopt/docopt",
@@ -2157,6 +2157,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
+        "php": "^8.1",
         "ext-json": "*"
     },
     "platform-dev": [],
