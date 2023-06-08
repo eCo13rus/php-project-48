@@ -29,7 +29,7 @@ function differenceCalculator(object $dataFirstFile, object $dataSecondFile): ar
         switch (true) {
             case !array_key_exists($key, $data1):
                 return ['key' => $key, 'data2Value' => $data2[$key], 'type' => 'added'];
-            case array_key_exists($key, $data2):
+            case !array_key_exists($key, $data2):
                 return ['key' => $key, 'data1Value' => $data1[$key], 'type' => 'removed'];
             case is_object($data1[$key]) && is_object($data2[$key]):
                 $children = differenceCalculator($data1[$key], $data2[$key]);
