@@ -5,7 +5,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2ea9e1a47d5c57d93717/test_coverage)](https://codeclimate.com/github/eCo13rus/php-project-48/test_coverage)
 
 # Project Description:
- - The Difference Calculator project is a PHP console utility designed to detect differences between two files. It works with files in JSON, XML and YAML formats and uses recursive comparison to account for data types and structures. The tool provides a choice of different formats for displaying results, including Stylish, Plain and Json.
+ - The "Difference Calculator" project is a PHP console utility designed to detect differences between two files. It works with files in JSON, XML and YAML formats and uses recursive comparison to account for data types and structures. The tool provides a choice of different formats for displaying results, including Stylish, Plain and Json.
 
 ## Requirements installation:
 
