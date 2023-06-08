@@ -30,7 +30,7 @@
 
 ## Use the command:
 
-### Recursive comparison of files with nested structure:
+### Comparison of json files
 - ./bin/gendiff tests/fixtures/file1_flat.json tests/fixtures/file2_flat.json 
 
 <a href="https://asciinema.org/a/n1OhFzkY1uFhYCTxoar43PVHW" target="_blank"><img src="https://asciinema.org/a/n1OhFzkY1uFhYCTxoar43PVHW.svg" /></a>
@@ -44,7 +44,7 @@
 
 ## Use the command:
 
-### Recursive file comparison json
+### Recursive comparison of json files with nested structure
 ./bin/gendiff tests/fixtures/file1_tree.json tests/fixtures/file2_tree.json
 
 <a href="https://asciinema.org/a/L3bhoI5yP4svgxqpaeupjMDtw" target="_blank"><img src="https://asciinema.org/a/L3bhoI5yP4svgxqpaeupjMDtw.svg" /></a>
