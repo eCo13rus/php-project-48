@@ -8,7 +8,7 @@ function makePlainFormat(array $astTree): string
 {
     $lines = render($astTree, '');
     $joinedLine = implode("\n", flatten($lines));
-    return "$joinedLine\n";
+    return "$joinedLine";
 }
 
 function render(array $tree, string $path): array

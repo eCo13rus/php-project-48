@@ -16,7 +16,7 @@ function render(array $astTree, int $depth = 0): string
         $deepening = $depth + 1;
         switch ($node['type']) {
             case 'parent':
-                return $indent . "    " . $node['key'] . ": " . render($node['children'], $deepening);
+                return $indent . "    " . $node['key'] . ": " . render($node['children'], $deepening) . "\n";
             case 'added':
                 $valueAdded = stringify([$node['data2Value']], $deepening);
                 return $indent . "  + " . $node['key'] . ": " . $valueAdded . "\n";
@@ -34,7 +34,7 @@ function render(array $astTree, int $depth = 0): string
                 return $indent . "    " . $node['key'] . ": " . $valueUnchanged . "\n";
         }
     }, $astTree);
-    return '{' . "\n" . implode("", $result) . $indent . '}' . "\n";
+    return '{' . "\n" . implode("", $result) . $indent . '}';
 }
 
 function buildIndent(int $depth, int $numberOfIndents): string
