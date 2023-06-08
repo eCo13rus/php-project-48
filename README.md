@@ -22,6 +22,13 @@
 
 ## Use the command:
 
+### information about the work of the program:
+- ./bin/gendiff -h
+
+<a href="https://asciinema.org/a/dnSWy9MbR8C49v9px4tQl7tTp" target="_blank"><img src="https://asciinema.org/a/dnSWy9MbR8C49v9px4tQl7tTp.svg" /></a>
+
+## Use the command:
+
 ### Comparison of json files
 - ./bin/gendiff tests/fixtures/file1_flat.json tests/fixtures/file2_flat.json 
 
