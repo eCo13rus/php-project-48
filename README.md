@@ -53,4 +53,8 @@
 ### Comparison output in json format:
 ./bin/gendiff --format json tests/fixtures/file1_tree.json tests/fixtures/file2_tree.json
 
+- or
+
+./bin/gendiff --format json tests/fixtures/file1_flat.json tests/fixtures/file2_flat.json
+
 <a href="https://asciinema.org/a/YqHXzm0McftQRNS7NwM9Hwgo1" target="_blank"><img src="https://asciinema.org/a/YqHXzm0McftQRNS7NwM9Hwgo1.svg" /></a>
