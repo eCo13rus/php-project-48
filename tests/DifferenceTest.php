@@ -8,10 +8,10 @@ use function Differ\Differ\genDiff;
 
 class DifferenceTest extends TestCase
 {
-    public const PATH_TO_FIRST_JSON_FILES = 'tests/fixtures/file1_tree.json';
-    public const PATH_TO_SECOND_JSON_FILES = 'tests/fixtures/file2_tree.json';
-    public const PATH_TO_FIRST_YAML_FILES = 'tests/fixtures/file1_tree.yaml';
-    public const PATH_TO_SECOND_YML_FILES = 'tests/fixtures/file2_tree.yaml';
+    public const PATH_TO_FIRST_JSON_FILE = 'tests/fixtures/file1_tree.json';
+    public const PATH_TO_SECOND_JSON_FILE = 'tests/fixtures/file2_tree.json';
+    public const PATH_TO_FIRST_YAML_FILE = 'tests/fixtures/file1_tree.yaml';
+    public const PATH_TO_SECOND_YML_FILE = 'tests/fixtures/file2_tree.yaml';
 
     /**
      * @dataProvider argumentProvider
@@ -38,14 +38,14 @@ class DifferenceTest extends TestCase
         return [
             [$firstPathFlatJson, $secondPathFlatJson, $expectedStylishFlatFile],
             [$firstPathFlatYaml, $secondPathFlatYml, $expectedStylishFlatFile],
-            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedStylishFile],
-            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedStylishFile, 'stylish'],
-            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedStylishFile],
-            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedStylishFile, 'stylish'],
-            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedPlainFile , 'plain'],
-            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedPlainFile, 'plain'],
-            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedJsonFile, 'json'],
-            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedJsonFile, 'json']
+            [self::PATH_TO_FIRST_JSON_FILE, self::PATH_TO_SECOND_JSON_FILE, $expectedStylishFile],
+            [self::PATH_TO_FIRST_JSON_FILE, self::PATH_TO_SECOND_JSON_FILE, $expectedStylishFile, 'stylish'],
+            [self::PATH_TO_FIRST_YAML_FILE, self::PATH_TO_SECOND_YML_FILE, $expectedStylishFile],
+            [self::PATH_TO_FIRST_YAML_FILE, self::PATH_TO_SECOND_YML_FILE, $expectedStylishFile, 'stylish'],
+            [self::PATH_TO_FIRST_JSON_FILE, self::PATH_TO_SECOND_JSON_FILE, $expectedPlainFile , 'plain'],
+            [self::PATH_TO_FIRST_YAML_FILE, self::PATH_TO_SECOND_YML_FILE, $expectedPlainFile, 'plain'],
+            [self::PATH_TO_FIRST_JSON_FILE, self::PATH_TO_SECOND_JSON_FILE, $expectedJsonFile, 'json'],
+            [self::PATH_TO_FIRST_YAML_FILE, self::PATH_TO_SECOND_YML_FILE, $expectedJsonFile, 'json']
         ];
     }
 }

@@ -14,3 +14,7 @@ test-coverage:
 	composer exec --verbose phpunit tests -- --coverage-clover build/logs/clover.xml
 test-coverage-html:
 	composer exec --verbose phpunit tests -- --coverage-html coverage
+push:
+	git add . 
+	git commit -m 'fix'
+	git push origin main
