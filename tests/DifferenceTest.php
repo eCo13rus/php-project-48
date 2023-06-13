@@ -14,18 +14,15 @@ class DifferenceTest extends TestCase
     public const PATH_TO_SECOND_YML_FILES = 'tests/fixtures/file2_tree.yaml';
 
     /**
-     * @dataProvider argumentProviderForFlatStructure
-     * @dataProvider argumentProviderForTreeStructureStylishFormat
-     * @dataProvider argumentProviderForTreeStructurePlainFormat
-     * @dataProvider argumentProviderForTreeStructureJsonFormat
+     * @dataProvider argumentProvider
      */
 
-    public function testGenDiff($firstPath, $secondPath, $expected, $style = 'stylish')
+    public function testGenDiff($firstPath, $secondPath, $expectedFile, $style = 'stylish')
     {
-        $this->assertEquals($expected, genDiff($firstPath, $secondPath, $style));
+        $this->assertStringEqualsFile($expectedFile, genDiff($firstPath, $secondPath, $style));
     }
 
-    public function argumentProviderForFlatStructure(): array
+    public function argumentProvider(): array
     {
         $firstPathFlatJson = 'tests/fixtures/file1_flat.json';
         $secondPathFlatJson = 'tests/fixtures/file2_flat.json';
@@ -33,53 +30,22 @@ class DifferenceTest extends TestCase
         $firstPathFlatYaml = 'tests/fixtures/file1_flat.yaml';
         $secondPathFlatYml = 'tests/fixtures/file2_flat.yml';
 
-        $expectedStylishFlat = file_get_contents($this->
-        getFixtureFullPath('result_formatter_stylish'));
+        $expectedStylishFlatFile = __DIR__ . '/fixtures/result_formatter_stylish';
+        $expectedStylishFile = __DIR__ . '/fixtures/result_stylish_formatter_tree';
+        $expectedPlainFile = __DIR__ . '/fixtures/result_plain_formatter_tree';
+        $expectedJsonFile = __DIR__ . '/fixtures/result_formatter_json';
 
         return [
-            [$firstPathFlatJson, $secondPathFlatJson, $expectedStylishFlat],
-            [$firstPathFlatYaml, $secondPathFlatYml, $expectedStylishFlat]
+            [$firstPathFlatJson, $secondPathFlatJson, $expectedStylishFlatFile],
+            [$firstPathFlatYaml, $secondPathFlatYml, $expectedStylishFlatFile],
+            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedStylishFile],
+            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedStylishFile, 'stylish'],
+            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedStylishFile],
+            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedStylishFile, 'stylish'],
+            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedPlainFile , 'plain'],
+            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedPlainFile, 'plain'],
+            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedJsonFile, 'json'],
+            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedJsonFile, 'json']
         ];
-    }
-
-    public function argumentProviderForTreeStructureStylishFormat(): array
-    {
-        $expectedStylish = file_get_contents($this->
-        getFixtureFullPath('result_stylish_formatter_tree'));
-
-        return [
-            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedStylish],
-            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedStylish, 'stylish'],
-            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedStylish],
-            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedStylish, 'stylish']
-        ];
-    }
-
-    public function argumentProviderForTreeStructurePlainFormat(): array
-    {
-        $expectedPlain = file_get_contents($this->
-        getFixtureFullPath('result_plain_formatter_tree'));
-
-        return [
-            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedPlain , 'plain'],
-            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedPlain, 'plain']
-        ];
-    }
-
-    public function argumentProviderForTreeStructureJsonFormat(): array
-    {
-        $expectedJson = file_get_contents($this->
-        getFixtureFullPath('result_formatter_json'));
-
-        return [
-            [self::PATH_TO_FIRST_JSON_FILES, self::PATH_TO_SECOND_JSON_FILES, $expectedJson, 'json'],
-            [self::PATH_TO_FIRST_YAML_FILES, self::PATH_TO_SECOND_YML_FILES, $expectedJson, 'json']
-        ];
-    }
-
-    public function getFixtureFullPath($fixtureName): string
-    {
-        $parts = [__DIR__, 'fixtures', $fixtureName];
-        return realpath(implode('/', $parts));
     }
 }
