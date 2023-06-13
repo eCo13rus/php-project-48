@@ -3,22 +3,31 @@
 namespace Differ\Differ;
 
 use function Differ\Parsers\convertingFile;
-use function Differ\Formatters\formatSelection;
+use function Differ\Formatters\format;
 use function Functional\sort;
+
 
 function genDiff(string $pathToFirstFile, string $pathToSecondFile, string $formatter = 'stylish'): string
 {
+    if (!file_exists($pathToFirstFile)) {
+        throw new \Exception("File {$pathToFirstFile} does not exist");
+    }
+    if (!file_exists($pathToSecondFile)) {
+        throw new \Exception("File {$pathToSecondFile} does not exist");
+    }
+
     $firstFileContent = (string) file_get_contents($pathToFirstFile, true);
     $secondFileContent = (string) file_get_contents($pathToSecondFile, true);
     $extensionFirstFile = pathinfo($pathToFirstFile, PATHINFO_EXTENSION);
     $extensionSecondFile = pathinfo($pathToSecondFile, PATHINFO_EXTENSION);
     $dataFirstFile = convertingFile($firstFileContent, $extensionFirstFile);
     $dataSecondFile = convertingFile($secondFileContent, $extensionSecondFile);
-    $astTree = differenceCalculator($dataFirstFile, $dataSecondFile);
-    return formatSelection($astTree, $formatter);
+    $astTree = computeDifference ($dataFirstFile, $dataSecondFile);
+    return format($astTree, $formatter);
 }
 
-function differenceCalculator(object $dataFirstFile, object $dataSecondFile): array
+
+function computeDifference (object $dataFirstFile, object $dataSecondFile): array
 {
     $data1 = get_object_vars($dataFirstFile);
     $data2 = get_object_vars($dataSecondFile);
@@ -32,7 +41,7 @@ function differenceCalculator(object $dataFirstFile, object $dataSecondFile): ar
             case !array_key_exists($key, $data2):
                 return ['key' => $key, 'data1Value' => $data1[$key], 'type' => 'removed'];
             case is_object($data1[$key]) && is_object($data2[$key]):
-                $children = differenceCalculator($data1[$key], $data2[$key]);
+                $children = computeDifference ($data1[$key], $data2[$key]);
                 return ['key' => $key,'type' => 'parent', 'children' => $children];
             case $data1[$key] === $data2[$key]:
                 return  ['key' => $key, 'data1Value' => $data1[$key], 'type' => 'unchanged'];
