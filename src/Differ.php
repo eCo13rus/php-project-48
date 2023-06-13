@@ -2,7 +2,7 @@
 
 namespace Differ\Differ;
 
-use function Differ\Parsers\convertingFile;
+use function Differ\Parsers\convertFile;
 use function Differ\Formatters\format;
 use function Functional\sort;
 
@@ -19,8 +19,8 @@ function genDiff(string $pathToFirstFile, string $pathToSecondFile, string $form
     $secondFileContent = (string) file_get_contents($pathToSecondFile, true);
     $extensionFirstFile = pathinfo($pathToFirstFile, PATHINFO_EXTENSION);
     $extensionSecondFile = pathinfo($pathToSecondFile, PATHINFO_EXTENSION);
-    $dataFirstFile = convertingFile($firstFileContent, $extensionFirstFile);
-    $dataSecondFile = convertingFile($secondFileContent, $extensionSecondFile);
+    $dataFirstFile = convertFile($firstFileContent, $extensionFirstFile);
+    $dataSecondFile = convertFile($secondFileContent, $extensionSecondFile);
     $astTree = computeDifference($dataFirstFile, $dataSecondFile);
     return format($astTree, $formatter);
 }
