@@ -4,7 +4,7 @@ namespace Differ\Formatters\Stylish;
 
 const NUMBER_INDENTS = 4;
 
-function formatStylish(array $astTree): string
+function format(array $astTree): string
 {
     return render($astTree);
 }

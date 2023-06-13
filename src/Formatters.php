@@ -6,11 +6,11 @@ function format(array $astTree, string $formatter): string
 {
     switch ($formatter) {
         case 'stylish':
-            return Stylish\formatStylish($astTree);
+            return Stylish\format($astTree);
         case 'plain':
-            return Plain\formatPlain($astTree);
+            return Plain\format($astTree);
         case 'json':
-            return Json\formatJson($astTree);
+            return Json\format($astTree);
         default:
             throw new \Exception("Invalid formatter. The format should be 'stylish' , 'plain' or 'json'");
     }

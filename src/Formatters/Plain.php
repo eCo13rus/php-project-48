@@ -4,7 +4,7 @@ namespace Differ\Formatters\Plain;
 
 use function Functional\flatten;
 
-function formatPlain(array $astTree): string
+function format(array $astTree): string
 {
     $lines = render($astTree, '');
     $joinedLine = implode("\n", flatten($lines));
