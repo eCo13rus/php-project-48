@@ -8,10 +8,10 @@ use function Differ\Differ\genDiff;
 
 class DifferenceTest extends TestCase
 {
-    public const PATH_TO_FIRST_JSON_FILE = 'tests/fixtures/file1_tree.json';
-    public const PATH_TO_SECOND_JSON_FILE = 'tests/fixtures/file2_tree.json';
-    public const PATH_TO_FIRST_YAML_FILE = 'tests/fixtures/file1_tree.yaml';
-    public const PATH_TO_SECOND_YML_FILE = 'tests/fixtures/file2_tree.yaml';
+    private function getFixturePath(string $filename): string
+    {
+        return __DIR__ . "/fixtures/{$filename}";
+    }
 
     /**
      * @dataProvider argumentProvider
@@ -24,28 +24,22 @@ class DifferenceTest extends TestCase
 
     public function argumentProvider(): array
     {
-        $firstPathFlatJson = 'tests/fixtures/file1_flat.json';
-        $secondPathFlatJson = 'tests/fixtures/file2_flat.json';
-
-        $firstPathFlatYaml = 'tests/fixtures/file1_flat.yaml';
-        $secondPathFlatYml = 'tests/fixtures/file2_flat.yml';
-
-        $expectedStylishFlatFile = __DIR__ . '/fixtures/result_formatter_stylish';
-        $expectedStylishFile = __DIR__ . '/fixtures/result_stylish_formatter_tree';
-        $expectedPlainFile = __DIR__ . '/fixtures/result_plain_formatter_tree';
-        $expectedJsonFile = __DIR__ . '/fixtures/result_formatter_json';
-
         return [
-            [$firstPathFlatJson, $secondPathFlatJson, $expectedStylishFlatFile],
-            [$firstPathFlatYaml, $secondPathFlatYml, $expectedStylishFlatFile],
-            [self::PATH_TO_FIRST_JSON_FILE, self::PATH_TO_SECOND_JSON_FILE, $expectedStylishFile],
-            [self::PATH_TO_FIRST_JSON_FILE, self::PATH_TO_SECOND_JSON_FILE, $expectedStylishFile, 'stylish'],
-            [self::PATH_TO_FIRST_YAML_FILE, self::PATH_TO_SECOND_YML_FILE, $expectedStylishFile],
-            [self::PATH_TO_FIRST_YAML_FILE, self::PATH_TO_SECOND_YML_FILE, $expectedStylishFile, 'stylish'],
-            [self::PATH_TO_FIRST_JSON_FILE, self::PATH_TO_SECOND_JSON_FILE, $expectedPlainFile , 'plain'],
-            [self::PATH_TO_FIRST_YAML_FILE, self::PATH_TO_SECOND_YML_FILE, $expectedPlainFile, 'plain'],
-            [self::PATH_TO_FIRST_JSON_FILE, self::PATH_TO_SECOND_JSON_FILE, $expectedJsonFile, 'json'],
-            [self::PATH_TO_FIRST_YAML_FILE, self::PATH_TO_SECOND_YML_FILE, $expectedJsonFile, 'json']
+            [$this->getFixturePath('file1_flat.json'), $this->getFixturePath('file2_flat.json'), $this->getFixturePath('result_formatter_stylish')],
+            [$this->getFixturePath('file1_flat.yaml'), $this->getFixturePath('file2_flat.yml'), $this->getFixturePath('result_formatter_stylish')],
+
+            [$this->getFixturePath('file1_tree.json'), $this->getFixturePath('file2_tree.json'), $this->getFixturePath('result_stylish_formatter_tree')],
+            [$this->getFixturePath('file1_tree.json'), $this->getFixturePath('file2_tree.json'), $this->getFixturePath('result_stylish_formatter_tree'), 'stylish'],
+
+            [$this->getFixturePath('file1_tree.yaml'), $this->getFixturePath('file2_tree.yaml'), $this->getFixturePath('result_stylish_formatter_tree')],
+            [$this->getFixturePath('file1_tree.yaml'), $this->getFixturePath('file2_tree.yaml'), $this->getFixturePath('result_stylish_formatter_tree'), 'stylish'],
+
+            [$this->getFixturePath('file1_tree.json'), $this->getFixturePath('file2_tree.json'), $this->getFixturePath('result_plain_formatter_tree'), 'plain'],
+            [$this->getFixturePath('file1_tree.yaml'), $this->getFixturePath('file2_tree.yaml'), $this->getFixturePath('result_plain_formatter_tree'), 'plain'],
+            
+            [$this->getFixturePath('file1_tree.json'), $this->getFixturePath('file2_tree.json'), $this->getFixturePath('result_formatter_json'), 'json'],
+            [$this->getFixturePath('file1_tree.yaml'), $this->getFixturePath('file2_tree.yaml'), $this->getFixturePath('result_formatter_json'), 'json']
         ];
     }
 }
+

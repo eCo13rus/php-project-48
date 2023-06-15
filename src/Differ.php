@@ -6,24 +6,25 @@ use function Differ\Parsers\convertFile;
 use function Differ\Formatters\format;
 use function Functional\sort;
 
-function genDiff(string $pathToFirstFile, string $pathToSecondFile, string $formatter = 'stylish'): string
+function parseFile(string $filePath): object
 {
-    if (!file_exists($pathToFirstFile)) {
-        throw new \Exception("File {$pathToFirstFile} does not exist");
-    }
-    if (!file_exists($pathToSecondFile)) {
-        throw new \Exception("File {$pathToSecondFile} does not exist");
+    if (!file_exists($filePath)) {
+        throw new \Exception("File {$filePath} does not exist");
     }
 
-    $firstFileContent = (string) file_get_contents($pathToFirstFile, true);
-    $secondFileContent = (string) file_get_contents($pathToSecondFile, true);
-    $extensionFirstFile = pathinfo($pathToFirstFile, PATHINFO_EXTENSION);
-    $extensionSecondFile = pathinfo($pathToSecondFile, PATHINFO_EXTENSION);
-    $dataFirstFile = convertFile($firstFileContent, $extensionFirstFile);
-    $dataSecondFile = convertFile($secondFileContent, $extensionSecondFile);
+    $fileContent = (string) file_get_contents($filePath, true);
+    $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+    return convertFile($fileContent, $extension);
+}
+
+function genDiff(string $pathToFirstFile, string $pathToSecondFile, string $formatter = 'stylish'): string
+{
+    $dataFirstFile = parseFile($pathToFirstFile);
+    $dataSecondFile = parseFile($pathToSecondFile);
     $astTree = computeDifference($dataFirstFile, $dataSecondFile);
     return format($astTree, $formatter);
 }
+
 
 
 function computeDifference(object $dataFirstFile, object $dataSecondFile): array

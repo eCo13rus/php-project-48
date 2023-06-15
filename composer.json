@@ -13,7 +13,7 @@
             "src/Formatters/Json.php"
         ],
         "psr-4": {
-            "tests\\test\\": "tests"
+            "Tests\\Test\\": "tests"
         }
     },
     "bin": [
