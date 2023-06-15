@@ -39,7 +39,7 @@ function stringify(array $dataValue): string
 
     if (is_object($value)) {
         return "[complex value]";
-    } 
+    }
 
     if ($value === null) {
         return 'null';
