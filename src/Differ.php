@@ -2,7 +2,7 @@
 
 namespace Differ\Differ;
 
-use function Differ\Parsers\convertFile;
+use function Differ\Parsers\parse;
 use function Differ\Formatters\format;
 use function Functional\sort;
 
@@ -14,7 +14,7 @@ function parseFile(string $filePath): object
 
     $fileContent = (string) file_get_contents($filePath, true);
     $extension = pathinfo($filePath, PATHINFO_EXTENSION);
-    return convertFile($fileContent, $extension);
+    return parse($fileContent, $extension);
 }
 
 function genDiff(string $pathToFirstFile, string $pathToSecondFile, string $formatter = 'stylish'): string

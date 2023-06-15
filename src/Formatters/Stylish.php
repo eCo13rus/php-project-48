@@ -16,26 +16,25 @@ function render(array $astTree, int $depth = 0): string
         $deepening = $depth + 1;
         switch ($node['type']) {
             case 'parent':
-                return $indent . "    " . $node['key'] . ": " . render($node['children'], $deepening) . "\n";
+                return "{$indent}    {$node['key']}: " . render($node['children'], $deepening) . "\n";
             case 'added':
                 $valueAdded = stringify([$node['value2']], $deepening);
-                return $indent . "  + " . $node['key'] . ": " . $valueAdded . "\n";
+                return "{$indent}  + {$node['key']}: {$valueAdded}\n";
             case 'removed':
                 $valueRemoved = stringify([$node['value1']], $deepening);
-                return $indent . "  - " . $node['key'] . ": " . $valueRemoved . "\n";
+                return "{$indent}  - {$node['key']}: {$valueRemoved}\n";
             case 'updated':
                 $valueRemoved = stringify([$node['value1']], $deepening);
                 $valueAdd = stringify([$node['value2']], $deepening);
-                $nodeRemoved = $node['key'] . ": " . $valueRemoved . "\n";
-                $nodeAdd = $node['key'] . ": " . $valueAdd;
-                return $indent . "  - " . $nodeRemoved . $indent . "  + " . $nodeAdd . "\n";
+                return "{$indent}  - {$node['key']}: {$valueRemoved}\n{$indent}  + {$node['key']}: {$valueAdd}\n";
             case 'unchanged':
                 $valueUnchanged = stringify([$node['value1']], $deepening);
-                return $indent . "    " . $node['key'] . ": " . $valueUnchanged . "\n";
+                return "{$indent}    {$node['key']}: {$valueUnchanged}\n";
         }
     }, $astTree);
-    return '{' . "\n" . implode("", $result) . $indent . '}';
+    return "{\n" . implode("", $result) . "{$indent}}";
 }
+
 
 function buildIndent(int $depth, int $numberOfIndents): string
 {
