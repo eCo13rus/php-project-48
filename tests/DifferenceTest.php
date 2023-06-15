@@ -36,7 +36,7 @@ class DifferenceTest extends TestCase
 
             [$this->getFixturePath('file1_tree.json'), $this->getFixturePath('file2_tree.json'), $this->getFixturePath('result_plain_formatter_tree'), 'plain'],
             [$this->getFixturePath('file1_tree.yaml'), $this->getFixturePath('file2_tree.yaml'), $this->getFixturePath('result_plain_formatter_tree'), 'plain'],
-            
+
             [$this->getFixturePath('file1_tree.json'), $this->getFixturePath('file2_tree.json'), $this->getFixturePath('result_formatter_json'), 'json'],
             [$this->getFixturePath('file1_tree.yaml'), $this->getFixturePath('file2_tree.yaml'), $this->getFixturePath('result_formatter_json'), 'json']
         ];
