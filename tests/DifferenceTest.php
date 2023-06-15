@@ -42,4 +42,3 @@ class DifferenceTest extends TestCase
         ];
     }
 }
-
