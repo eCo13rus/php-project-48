@@ -16,11 +16,11 @@ function render(array $tree, string $path): array
     return array_map(function ($node) use ($path) {
         switch ($node['type']) {
             case 'updated':
-                $data1Value = stringify([$node['data1Value']]);
-                $data2Value = stringify([$node['data2Value']]);
-                return "Property '$path{$node['key']}' was updated. From $data1Value to $data2Value";
+                $value1 = stringify([$node['value1']]);
+                $value2 = stringify([$node['value2']]);
+                return "Property '$path{$node['key']}' was updated. From $value1 to $value2";
             case 'added':
-                $value = stringify([$node['data2Value']]);
+                $value = stringify([$node['value2']]);
                 return "Property '$path{$node['key']}' was added with value: $value";
             case 'removed':
                 return "Property '$path{$node['key']}' was removed";

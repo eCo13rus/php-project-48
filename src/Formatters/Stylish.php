@@ -18,19 +18,19 @@ function render(array $astTree, int $depth = 0): string
             case 'parent':
                 return $indent . "    " . $node['key'] . ": " . render($node['children'], $deepening) . "\n";
             case 'added':
-                $valueAdded = stringify([$node['data2Value']], $deepening);
+                $valueAdded = stringify([$node['value2']], $deepening);
                 return $indent . "  + " . $node['key'] . ": " . $valueAdded . "\n";
             case 'removed':
-                $valueRemoved = stringify([$node['data1Value']], $deepening);
+                $valueRemoved = stringify([$node['value1']], $deepening);
                 return $indent . "  - " . $node['key'] . ": " . $valueRemoved . "\n";
             case 'updated':
-                $valueRemoved = stringify([$node['data1Value']], $deepening);
-                $valueAdd = stringify([$node['data2Value']], $deepening);
+                $valueRemoved = stringify([$node['value1']], $deepening);
+                $valueAdd = stringify([$node['value2']], $deepening);
                 $nodeRemoved = $node['key'] . ": " . $valueRemoved . "\n";
                 $nodeAdd = $node['key'] . ": " . $valueAdd;
                 return $indent . "  - " . $nodeRemoved . $indent . "  + " . $nodeAdd . "\n";
             case 'unchanged':
-                $valueUnchanged = stringify([$node['data1Value']], $deepening);
+                $valueUnchanged = stringify([$node['value1']], $deepening);
                 return $indent . "    " . $node['key'] . ": " . $valueUnchanged . "\n";
         }
     }, $astTree);

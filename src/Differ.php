@@ -37,16 +37,16 @@ function computeDifference(object $dataFirstFile, object $dataSecondFile): array
     return array_map(function ($key) use ($data1, $data2) {
         switch (true) {
             case !array_key_exists($key, $data1):
-                return ['key' => $key, 'data2Value' => $data2[$key], 'type' => 'added'];
+                return ['key' => $key, 'value2' => $data2[$key], 'type' => 'added'];
             case !array_key_exists($key, $data2):
-                return ['key' => $key, 'data1Value' => $data1[$key], 'type' => 'removed'];
+                return ['key' => $key, 'value1' => $data1[$key], 'type' => 'removed'];
             case is_object($data1[$key]) && is_object($data2[$key]):
                 $children = computeDifference($data1[$key], $data2[$key]);
                 return ['key' => $key,'type' => 'parent', 'children' => $children];
             case $data1[$key] === $data2[$key]:
-                return  ['key' => $key, 'data1Value' => $data1[$key], 'type' => 'unchanged'];
+                return  ['key' => $key, 'value1' => $data1[$key], 'type' => 'unchanged'];
             default:
-                return ['key' => $key, 'data1Value' => $data1[$key], 'data2Value' => $data2[$key], 'type' => 'updated'];
+                return ['key' => $key, 'value1' => $data1[$key], 'value2' => $data2[$key], 'type' => 'updated'];
         }
     }, $orderedKeys);
 }
