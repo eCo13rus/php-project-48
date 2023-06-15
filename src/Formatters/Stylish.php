@@ -44,18 +44,27 @@ function buildIndent(int $depth, int $numberOfIndents): string
 function stringify(array $dataValue, int $depth): string
 {
     $value = $dataValue[0];
+
     if (is_bool($value)) {
         return $value ? 'true' : 'false';
-    } elseif (is_null($value)) {
+    }
+
+    if (is_null($value)) {
         return 'null';
-    } elseif (!is_object($value)) {
+    }
+
+    if (!is_object($value)) {
         return (string) $value;
     }
+
     $indent = buildIndent($depth, NUMBER_INDENTS);
+
     $stringOfArray = array_map(function ($key, $item) use ($depth, $indent) {
         $deepening = $depth + 1;
         $typeOfValueOfNode = (is_object($item)) ? stringify([$item], $deepening) : $item;
+
         return $indent . "    " . "$key: " . $typeOfValueOfNode . "\n";
     }, array_keys(get_object_vars($value)), get_object_vars($value));
+
     return '{' . "\n" . implode("", $stringOfArray) . $indent . '}';
 }

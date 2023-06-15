@@ -6,10 +6,9 @@ use function Functional\flatten;
 
 function format(array $astTree): string
 {
-    $lines = render($astTree, '');
-    $joinedLine = implode("\n", flatten($lines));
-    return "$joinedLine";
+    return implode("\n", flatten(render($astTree, '')));
 }
+
 
 function render(array $tree, string $path): array
 {
@@ -37,10 +36,14 @@ function render(array $tree, string $path): array
 function stringify(array $dataValue): string
 {
     $value = $dataValue[0];
+
     if (is_object($value)) {
         return "[complex value]";
-    } elseif ($value === null) {
+    } 
+
+    if ($value === null) {
         return 'null';
     }
+
     return var_export($value, true);
 }

@@ -45,24 +45,24 @@
 ## Use the command:
 
 ### Recursive comparison of json files with nested structure:
-./bin/gendiff tests/fixtures/file1_tree.json tests/fixtures/file2_tree.json
+- ./bin/gendiff tests/fixtures/file1_tree.json tests/fixtures/file2_tree.json
 
 <a href="https://asciinema.org/a/L3bhoI5yP4svgxqpaeupjMDtw" target="_blank"><img src="https://asciinema.org/a/L3bhoI5yP4svgxqpaeupjMDtw.svg" /></a>
 
 ## Use the command:
 
 ### Comparison output in flat format:
-./bin/gendiff --format plain tests/fixtures/file1_flat.json tests/fixtures/file2_flat.json
+- ./bin/gendiff --format plain tests/fixtures/file1_flat.json tests/fixtures/file2_flat.json
 
 <a href="https://asciinema.org/a/W6JE0GdDzbJQp6cANr9K6SfxZ" target="_blank"><img src="https://asciinema.org/a/W6JE0GdDzbJQp6cANr9K6SfxZ.svg" /></a>
 
 ## Use the command:
 
 ### Comparison output in json format:
-./bin/gendiff --format json tests/fixtures/file1_tree.json tests/fixtures/file2_tree.json
+- ./bin/gendiff --format json tests/fixtures/file1_tree.json tests/fixtures/file2_tree.json
 
 - or
 
-./bin/gendiff --format json tests/fixtures/file1_flat.json tests/fixtures/file2_flat.json
+- ./bin/gendiff --format json tests/fixtures/file1_flat.json tests/fixtures/file2_flat.json
 
 <a href="https://asciinema.org/a/YqHXzm0McftQRNS7NwM9Hwgo1" target="_blank"><img src="https://asciinema.org/a/YqHXzm0McftQRNS7NwM9Hwgo1.svg" /></a>
