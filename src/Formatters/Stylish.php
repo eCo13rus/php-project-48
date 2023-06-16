@@ -41,7 +41,7 @@ function buildIndent(int $depth, int $numberOfIndents): string
     return str_repeat(" ", $depth * $numberOfIndents);
 }
 
-function stringify($value, int $depth): string
+function stringify(string $value, int $depth): string
 {
 
     if (is_bool($value)) {

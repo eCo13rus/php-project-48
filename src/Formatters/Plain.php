@@ -32,7 +32,7 @@ function render(array $tree, string $path): array
     }, $tree);
 }
 
-function stringify($value): string
+function stringify(string $value): string
 {
     if (is_object($value)) {
         return "[complex value]";
