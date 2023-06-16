@@ -18,17 +18,17 @@ function render(array $astTree, int $depth = 0): string
             case 'parent':
                 return "{$indent}    {$node['key']}: " . render($node['children'], $deepening) . "\n";
             case 'added':
-                $valueAdded = stringify([$node['value2']], $deepening);
+                $valueAdded = stringify($node['value2'], $deepening);
                 return "{$indent}  + {$node['key']}: {$valueAdded}\n";
             case 'removed':
-                $valueRemoved = stringify([$node['value1']], $deepening);
+                $valueRemoved = stringify($node['value1'], $deepening);
                 return "{$indent}  - {$node['key']}: {$valueRemoved}\n";
             case 'updated':
-                $valueRemoved = stringify([$node['value1']], $deepening);
-                $valueAdd = stringify([$node['value2']], $deepening);
+                $valueRemoved = stringify($node['value1'], $deepening);
+                $valueAdd = stringify($node['value2'], $deepening);
                 return "{$indent}  - {$node['key']}: {$valueRemoved}\n{$indent}  + {$node['key']}: {$valueAdd}\n";
             case 'unchanged':
-                $valueUnchanged = stringify([$node['value1']], $deepening);
+                $valueUnchanged = stringify($node['value1'], $deepening);
                 return "{$indent}    {$node['key']}: {$valueUnchanged}\n";
         }
     }, $astTree);
@@ -41,9 +41,8 @@ function buildIndent(int $depth, int $numberOfIndents): string
     return str_repeat(" ", $depth * $numberOfIndents);
 }
 
-function stringify(array $dataValue, int $depth): string
+function stringify($value, int $depth): string
 {
-    $value = $dataValue[0];
 
     if (is_bool($value)) {
         return $value ? 'true' : 'false';
@@ -61,7 +60,7 @@ function stringify(array $dataValue, int $depth): string
 
     $stringOfArray = array_map(function ($key, $item) use ($depth, $indent) {
         $deepening = $depth + 1;
-        $typeOfValueOfNode = (is_object($item)) ? stringify([$item], $deepening) : $item;
+        $typeOfValueOfNode = (is_object($item)) ? stringify($item, $deepening) : $item;
 
         return $indent . "    " . "$key: " . $typeOfValueOfNode . "\n";
     }, array_keys(get_object_vars($value)), get_object_vars($value));

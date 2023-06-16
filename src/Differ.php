@@ -25,8 +25,6 @@ function genDiff(string $pathToFirstFile, string $pathToSecondFile, string $form
     return format($astTree, $formatter);
 }
 
-
-
 function computeDifference(object $dataFirstFile, object $dataSecondFile): array
 {
     $data1 = get_object_vars($dataFirstFile);

@@ -11,10 +11,7 @@
             "src/Formatters/Stylish.php",
             "src/Formatters/Plain.php",
             "src/Formatters/Json.php"
-        ],
-        "psr-4": {
-            "Tests\\Test\\": "tests"
-        }
+        ]        
     },
     "bin": [
         "bin/gendiff"
