@@ -43,6 +43,6 @@ class DifferenceTest extends TestCase
 
             ['file1_tree.json', 'file2_tree.json', 'result_formatter_json', 'json'],
             ['file1_tree.yaml', 'file2_tree.yaml', 'result_formatter_json', 'json']
-        ];
-    }  
+         ];
+    }
 }
